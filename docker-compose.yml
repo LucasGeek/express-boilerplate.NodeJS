@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  # Serviço do Aplicativo
+  app:
+    build: .  # Constrói a imagem do container a partir do Dockerfile no diretório atual
+    ports:
+      - "${PORT}:3000"  # Mapeia a porta definida no .env para a porta 3000 do container
+    container_name: 'api'
+    environment:
+      # Define as variáveis de ambiente do aplicativo a partir do arquivo .env
+      - NODE_ENV=${NODE_ENV}
+      - DB_HOST=mysql
+      - DB_PORT=${DB_PORT}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_DATABASE=${DB_DATABASE}
+    volumes:
+      # Monta o diretório atual no diretório de trabalho do container
+      - .:/usr/src/app
+      # Persiste node_modules para melhorar o tempo de inicialização e desenvolvimento
+      - /usr/src/app/node_modules
+    depends_on:
+      - mysql  # Garante que o serviço MySQL seja iniciado antes do serviço app
+    networks:
+      - app-network  # Conecta o serviço app à rede app-network
+
+  # Serviço MySQL
+  mysql:
+    image: mysql:5.7  # Usa a imagem do MySQL versão 5.7
+    container_name: 'mysql'
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      # Configura o MySQL com as variáveis de ambiente do .env
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      # Monta um volume para persistência dos dados do MySQL
+      - mysql-data:/var/lib/mysql
+    networks:
+      - app-network  # Conecta o serviço mysql à rede app-network
+
+# Volumes para persistência de dados
+volumes:
+  mysql-data:  # Volume para os dados do MySQL, evita perda de dados ao reiniciar o container
+
+# Redes
+networks:
+  app-network:  # Rede definida para comunicação entre os serviços app e mysql

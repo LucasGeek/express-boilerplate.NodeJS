@@ -1,0 +1,65 @@
+{
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 2020,
+        "sourceType": "module"
+    },
+    "env": {
+        "node": true,
+        "es6": true
+    },
+    "rules": {
+        "indent": [
+            "error",
+            2
+        ], // Indentação de 2 espaços
+        "linebreak-style": [
+            "error",
+            "windows"
+        ], // Estilo de quebra de linha Unix
+        "quotes": [
+            "error",
+            "double"
+        ], // Aspas duplas
+        "semi": [
+            "error",
+            "always"
+        ], // Sempre usar ponto e vírgula
+        "@typescript-eslint/no-unused-vars": [
+            "warn"
+        ], // Avisa sobre variáveis não utilizadas
+        "no-console": "off", // Permite o uso de console.log
+        "eol-last": [
+            "error",
+            "always"
+        ], // Garante uma nova linha no fim dos arquivos
+        "object-curly-spacing": [
+            "error",
+            "always"
+        ], // Espaços dentro de chaves de objetos
+        "array-bracket-spacing": [
+            "error",
+            "never"
+        ], // Sem espaços dentro de colchetes de arrays
+        "space-in-parens": [
+            "error",
+            "never"
+        ], // Sem espaços dentro de parênteses
+        "space-before-blocks": [
+            "error",
+            "always"
+        ], // Espaço antes de blocos
+        "keyword-spacing": [
+            "error",
+            {
+                "before": true,
+                "after": true
+            }
+        ], // Espaço antes e depois de palavras-chave
+        "space-infix-ops": "error" // Espaço em torno de operadores infixos
+    }
+}

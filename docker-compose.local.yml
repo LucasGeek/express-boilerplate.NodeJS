@@ -1,0 +1,31 @@
+# EXECUTE ESSE ARQUIVO COM
+# "docker compose -f docker-compose.local.yml up"
+version: '3.8'
+
+services:
+  # Serviço MySQL
+  mysql:
+    image: mysql:5.7  # Usa a imagem do MySQL versão 5.7
+    container_name: 'mysql'
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      # Configura o MySQL com as variáveis de ambiente do .env
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      # Monta um volume para persistência dos dados do MySQL
+      - mysql-data:/var/lib/mysql
+    networks:
+      - app-network  # Conecta o serviço mysql à rede app-network
+
+# Definição de volumes para persistência de dados
+volumes:
+   mysql-data:  # Volume para os dados do MySQL
+
+# Definição de redes
+networks:
+  app-network:  # Rede que permite a comunicação entre os serviços

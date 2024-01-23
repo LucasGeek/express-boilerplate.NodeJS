@@ -1,0 +1,48 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "module": "commonjs",
+        "outDir": "./dist",
+        "baseUrl": "./",
+        "strict": true,
+        "declaration": true,
+        "removeComments": true,
+        "emitDecoratorMetadata": true,
+        "allowSyntheticDefaultImports": true,
+        "sourceMap": true,
+        "incremental": true,
+        "useUnknownInCatchVariables": false,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "experimentalDecorators": true,
+        "strictPropertyInitialization": false,
+        "typeRoots": [
+            "./types",
+            "./node_modules/@types"
+        ],
+        "paths": {
+            "@entities/*": [
+                "src/entities/*"
+            ],
+            "@controllers/*": [
+                "src/controllers/*"
+            ],
+            "@services/*": [
+                "src/services/*"
+            ],
+            "@database/*": [
+                "src/database/*"
+            ],
+            "@middlewares/*": [
+                "src/middlewares/*"
+            ]
+        }
+    },
+    "include": [
+        "src/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}

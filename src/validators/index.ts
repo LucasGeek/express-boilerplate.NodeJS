@@ -1,0 +1,5 @@
+export * from './update-password.validator'
+export * from './update-email.validator'
+export * from './create-user.validator'
+export * from './update-user.validator'
+export * from './login.validator'
