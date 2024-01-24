@@ -1,9 +1,9 @@
 {
-  "name": "express-boilerplate",
+  "name": "node-express-boilerplate",
   "version": "1.0.0",
-  "description": "",
+  "description": "Configuração e padronizações iniciais de um projeto nodejs com express",
   "keywords": [],
-  "author": "",
+  "author": "Lucas Albuquerque",
   "license": "ISC",
   "scripts": {
     "start": "node dist/server.js",
